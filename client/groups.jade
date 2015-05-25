@@ -1,0 +1,20 @@
+template(name="groups")
+   .col-md-6
+      h1 Groups
+      each groups
+         .row
+            .col-md-6 #{name}
+            .col-md-2
+               if isMember
+                  span.glyphicon.glyphicon-ok
+                  | You are a member
+               else
+                  button.btn.btn-default.joinGroup
+                     span.glyphicon.glyphicon-heart
+                     | Join
+      h2 Create new group:
+      .form-group
+         label(for="name") Name
+         input.form-control#name
+      .form-group
+         button.btn.btn-primary#createGroup Create

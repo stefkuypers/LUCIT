@@ -1,0 +1,12 @@
+template(name="home")
+   .col-md-4
+      h1 Welcome to Lucit
+      if currentUser
+         p Nice to see you again
+      else
+         p Please login to continue
+         +loginButtons
+   .col-md-2
+      ul.nav.nav-pills.nav-stacked
+         li
+            a(href="{{pathFor 'groups'}}") Groups
