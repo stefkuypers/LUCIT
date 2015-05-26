@@ -8,5 +8,9 @@ template(name="home")
          +loginButtons
    .col-md-2
       ul.nav.nav-pills.nav-stacked
-         li
+        li
+            a(href="{{pathFor 'home'}}") Home
+        li
             a(href="{{pathFor 'groups'}}") Groups
+        li
+            a(href="{{pathFor 'datepicker'}}") Date picker
