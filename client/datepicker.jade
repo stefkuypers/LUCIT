@@ -2,24 +2,34 @@
     Created by stef on 26/05/15.
 
 template(name="datepicker")
-    .col-md-4
-        h1 Pick a date
-        h2 Define block size
-        .form-group
-            input.form-control#size
-            btn.btn-block.dropdown
-                ul.dropdown-menu
-                    li Minutes
-                    li Hours
-                    li Days
-                    li Weeks
-                    li Months
-                    li Years
-    .col-md-2
-        ul.nav.nav-pills.nav-stacked
-            li
-                a(href="{{pathFor 'home'}}") Home
-            li
-                a(href="{{pathFor 'groups'}}") Groups
-            li
-                a(href="{{pathFor 'datepicker'}}") Date picker
+    .row
+        .col-md-4
+            h1 Pick a date
+            h2 Define block size
+            .form-group
+                .input-group
+                    input.form-control(type="text")
+                    .input-group-btn
+                        button.btn.btn-default.dropdown-toggle(data-toggle="dropdown") Unit
+                        span.caret
+                    ul.dropdown-menu
+                        li
+                            a(href="{{pathFor 'home'}}") Minutes
+                        li
+                            Hours
+                        li
+                            Days
+                        li
+                            Weeks
+                        li
+                            Months
+                        li
+                            Years
+        .col-md-2
+            ul.nav.nav-pills.nav-stacked
+                li
+                    a(href="{{pathFor 'home'}}") Home
+                li
+                    a(href="{{pathFor 'groups'}}") Groups
+                li
+                    a(href="{{pathFor 'datepicker'}}") Date picker

@@ -15,7 +15,7 @@
       "component-animations" : false,
       "dropdowns"            : true,
       "button-groups"        : true,
-      "input-groups"         : false,
+      "input-groups"         : true,
       "navs"                 : true,
       "navbar"               : false,
       "breadcrumbs"          : false,
