@@ -1,18 +1,31 @@
-Date.isLeapYear: (year) ->
-  (((year % 4 is 0) && (year % 100 is not 0)) || (year % 400 is 0))
+Date.isLeapYear = (year) ->
+  year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
-Date.getDaysInMonth: (year, month) ->
-  [31, (Date.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month]
+Date.getDaysInMonth = (year, month) ->
+  [
+    31
+    if Date.isLeapYear(year) then 29 else 28
+    31
+    30
+    31
+    30
+    31
+    31
+    30
+    31
+    30
+    31
+  ][month]
 
-Date.prototype.isLeapYear: ->
-  Date.isLeapYear(this.getFullYear())
+Date::isLeapYear = ->
+  Date.isLeapYear @getFullYear()
 
-Date.prototype.getDaysInMonth: ->
-  Date.getDaysInMonth(this.getFullYear(), this.getMonth())
+Date::getDaysInMonth = ->
+  Date.getDaysInMonth @getFullYear(), @getMonth()
 
-Date.prototype.addMonths: (value) ->
-  n = this.getDate()
-  this.setDate(1)
-  this.setMonth(this.getMonth() + value)
-  this.setDate(Math.min(n, this.getDaysInMonth()))
+Date::addMonths = (value) ->
+  n = @getDate()
+  @setDate 1
+  @setMonth @getMonth() + value
+  @setDate Math.min(n, @getDaysInMonth())
   this
