@@ -57,22 +57,25 @@ class DatePicker
     block =
       startTime: startDate.getTime()
       endTime: endDate.getTime()
-    pickBlock(block)
+    #@pickBlock(block)
 
-  # Get the blocks to choose from.
+# Get the blocks to choose from.
   getBlocks: ->
-    curNumBlocks = numBlocks if curBlockUnit is blockUnit else 1
+    if curBlockUnit is blockUnit
+      curNumBlocks = numBlocks
+    else
+      curNumBlocks = 1
     blocks = []
     curTime = curStartDate.getTime()
     while curTime < curEndDate.getTime()
       block =
         startTime: curTime
         endTime: getEndTime(curTime, curNumBlocks)
-      blocks.push(block) if datePickerProfile.isBlockValid(block, curBlockUnit)
+      blocks.push(block) if @datePickerProfile.isBlockValid(block, curBlockUnit)
       curTime = getEndTime(curTime, 1)
     blocks
 
-  # Based on the current block unit, get the end time for a block which is blockLength units long
+# Based on the current block unit, get the end time for a block which is blockLength units long
   getEndTime: (time, blockLength) ->
     if blockUnits.indexOf(curBlockUnit) < blockUnits.indexOf(MONTH)
       time + blockLength * curBlockUnit.size
