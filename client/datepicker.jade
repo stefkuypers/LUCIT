@@ -2,28 +2,33 @@
     Created by stef on 26/05/15.
 
 template(name="datepicker")
-    .row
-        .col-md-6
+        .col-md-5
             h1 Pick a date
             h2 Define block size
-            .form-group
-                .input-group
-                    .input.form-control(type="text")
-                    .button.btn.btn-default.dropdown-toggle.btn-select2(data-toggle="dropdown") #{unit}
-                    span.caret
-                    ul.dropdown-menu
+            .row
+                .col-md-8
+                    input.form-control#size(type='text')
+                    .form-group
+                        btn.btn.btn-default#calculatePeriods
+                            | Calculate
+                .col-md-2
+                    button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-expanded='false') Unit
+                            span.caret
+                    ul.dropdown-menu(role='menu')
+                        // How can I detect what has been selected?
                         li
-                            a(href="#") Minutes
+                            a(href='#minutes' id='minutes') Minutes
                         li
-                            a(href="#") Hours
+                            a(href='#') Hours
                         li
-                            a(href="#") Days
+                            a(href='#') Days
                         li
-                            a(href="#") Weeks
+                            a(href='#') Weeks
                         li
-                            a(href="#") Months
+                            a(href='#') Months
                         li
-                            a(href="#") Years
+                            a(href='#') Years
+
         .col-md-2
             ul.nav.nav-pills.nav-stacked
                 li

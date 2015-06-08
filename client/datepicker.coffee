@@ -5,7 +5,7 @@ MINUTE =
   size: 1000 * 60
   maxBlocks: 15
 
-HOUR =
+@HOUR =
   name: "Hours"
   size: 60 * MINUTE.size
   maxBlocks: 24
@@ -57,11 +57,11 @@ class DatePicker
     block =
       startTime: startDate.getTime()
       endTime: endDate.getTime()
-    #@pickBlock(block)
+    @pickBlock(block)
 
 # Get the blocks to choose from.
   getBlocks: ->
-    if curBlockUnit is blockUnit
+    if @curBlockUnit is @blockUnit
       curNumBlocks = numBlocks
     else
       curNumBlocks = 1
@@ -89,7 +89,7 @@ class DatePicker
 
   pickBlock: (block) ->
     timeBetween = block.endTime - block.startTime
-    @curBlockUnit = blockUnit
+    @curBlockUnit = @blockUnit
     @curStartDate = new Date(block.startTime)
     @curEndDate = new Date(block.endTime)
     while timeBetween / curBlockUnit.size > curBlockUnit.maxBlocks
@@ -110,3 +110,12 @@ class DatePicker
       date.setDate(1)
     if blockUnits.indexOf(curBlockUnit) > blockUnits.indexOf(MONTH)
       date.setMonth(1)
+
+
+Template.datepicker.events
+  'click #calculatePeriods': ->
+    size = $('#size').val()
+    console.log('click #calculatePeriods ' + size)
+    console.log(@HOUR.stringify())
+    datePicker = new DatePicker(new Date(2015, 8, 1), new Date(2015,8,31), size, @HOUR, new DatePickerProfile('test'))
+    console.log(datePicker.getBlocks().stringValue())
